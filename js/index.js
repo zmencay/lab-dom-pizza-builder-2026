@@ -26,6 +26,22 @@ function renderPizza() {
   pimientos.forEach(pimiento => {
     pimiento.style.visibility = pizza.greenPeppers ? "visible" : "hidden";
   });
+
+  // salsa
+  const salsa = document.querySelector(".sauce");
+  if (pizza.whiteSauce) {
+    salsa.classList.add("sauce-white");
+  } else {
+    salsa.classList.remove("sauce-white");
+  }
+
+  // gluten
+  const gluten = document.querySelector(".crust");
+  if (pizza.glutenFreeCrust) {
+    gluten.classList.add("crust-gluten-free");
+  } else {
+    gluten.classList.remove("crust-gluten-free");
+  }
 }
 
 // peperoni
@@ -53,6 +69,26 @@ const btnPimientos = document.querySelector(".btn.btn-green-peppers");
 
 btnPimientos.onclick = function () {
   pizza.greenPeppers = !pizza.greenPeppers;
+  this.classList.toggle('active');
+
+  renderPizza();
+};
+
+// salsa blanca
+const btnSalsa = document.querySelector(".btn.btn-sauce");
+
+btnSalsa.onclick = function () {
+  pizza.whiteSauce = !pizza.whiteSauce;
+  this.classList.toggle('active');
+
+  renderPizza();
+};
+
+// masa gluten
+const btnCrust = document.querySelector(".btn.btn-crust");
+
+btnCrust.onclick = function () {
+  pizza.glutenFreeCrust = !pizza.glutenFreeCrust;
   this.classList.toggle('active');
 
   renderPizza();
